@@ -9,18 +9,23 @@ void GPIO_Configuration(void);
 void SysTick_Handler();
 
 void snake_eff_a(uint32_t ms);
+void snake_eff_b(uint32_t ms);
 void butterfly_eff_a(uint32_t ms);
+void butterfly_eff_b(uint32_t ms);
+
 void effect_1(uint32_t ms);
 void effect_2(uint32_t ms);
 
 static __IO uint32_t nTicks;
-
+ 
 uint16_t delay_ms[5] = {100,200,500,1000,2000};
 
 uint16_t eff_1[2] = {0x0000, 0xFFFF};
 uint16_t eff_2[14] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff};
 uint16_t butterfly_a[14] = { 0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
 uint16_t snake_a[17] = { 0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000, 0x8000};
+uint16_t butterfly_b[14] = { 0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
+uint16_t snake_b[16] = { 0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
 	
 	
 uint8_t i = 0;
@@ -51,16 +56,21 @@ int main(void)
 					delay_level++;
 			}
 		}*/
+		/*
 		if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)){
 			if(delay_level == 5)
 					delay_level = 0;
 				else
 					delay_level++;
-		}
+		} */
+				delay_level = 1;
+				/*
 				effect_1(delay_ms[delay_level]);
-				effect_2(delay_ms[delay_level]);
+				effect_2(delay_ms[delay_level]); */
 				snake_eff_a(delay_ms[delay_level]);
+				snake_eff_b(delay_ms[delay_level]);
 				butterfly_eff_a(delay_ms[delay_level]);
+				butterfly_eff_b(delay_ms[delay_level]);
 	}
 }
 
@@ -76,6 +86,12 @@ void effect_2(uint32_t ms){
 		Delay_ms(ms);}
 }
 
+void snake_eff_b(uint32_t ms){
+		for(i = 0;i < 16; i++){
+				GPIO_Write(GPIOB, snake_b[i]);
+				Delay_ms(ms);
+		}
+}
 
 void snake_eff_a(uint32_t ms){
 		for(i = 0; i < 17;i++){
@@ -84,12 +100,19 @@ void snake_eff_a(uint32_t ms){
 		}
 }
 
+void butterfly_eff_b(uint32_t ms){
+		for(i = 0; i < 14;i++){
+		GPIO_Write(GPIOB, butterfly_b[i]);
+		Delay_ms(ms);
+		}
+}
 void butterfly_eff_a(uint32_t ms){
 		for(i = 0; i < 14;i++){
 		GPIO_Write(GPIOA, butterfly_a[i]);
 		Delay_ms(ms);
 		}
 }
+
 
 void SysTick_Handler()
 {
@@ -134,12 +157,12 @@ void GPIO_Configuration(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // thiet lap toc do ngo ra cac chan
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	/*
+	
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	*/
+	
 	
 	//==========Button=======================//
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
