@@ -27,15 +27,15 @@ Project File Date:  11/03/2022
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(9): warning: this function declaration is not a prototype [-Wstrict-prototypes]
+main.c(10): warning: this function declaration is not a prototype [-Wstrict-prototypes]
 void SysTick_Handler();
                     ^
                      void
-main.c(21): warning: no previous extern declaration for non-static variable 'delay_ms' [-Wmissing-variable-declarations]
-uint16_t delay_ms[5] = {100,200,500,1000,2000};
+main.c(21): warning: no previous extern declaration for non-static variable 'delay_eff' [-Wmissing-variable-declarations]
+uint32_t delay_eff = 100;
          ^
 main.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t delay_ms[5] = {100,200,500,1000,2000};
+uint32_t delay_eff = 100;
 ^
 main.c(23): warning: no previous extern declaration for non-static variable 'eff_1' [-Wmissing-variable-declarations]
 uint16_t eff_1[2] = {0x0000, 0xFFFF};
@@ -43,91 +43,115 @@ uint16_t eff_1[2] = {0x0000, 0xFFFF};
 main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint16_t eff_1[2] = {0x0000, 0xFFFF};
 ^
-main.c(24): warning: no previous extern declaration for non-static variable 'eff_2' [-Wmissing-variable-declarations]
-uint16_t eff_2[14] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff};
-         ^
-main.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t eff_2[14] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff};
-^
 main.c(25): warning: no previous extern declaration for non-static variable 'butterfly_a' [-Wmissing-variable-declarations]
-uint16_t butterfly_a[14] = { 0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
+uint16_t butterfly_a[14] = {0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
          ^
 main.c(25): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t butterfly_a[14] = { 0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
+uint16_t butterfly_a[14] = {0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
 ^
 main.c(26): warning: no previous extern declaration for non-static variable 'snake_a' [-Wmissing-variable-declarations]
-uint16_t snake_a[17] = { 0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000, 0x8000};
+uint16_t snake_a[16] = {0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000};
          ^
 main.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t snake_a[17] = { 0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000, 0x8000};
+uint16_t snake_a[16] = {0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000};
 ^
 main.c(27): warning: no previous extern declaration for non-static variable 'butterfly_b' [-Wmissing-variable-declarations]
-uint16_t butterfly_b[14] = { 0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
+uint16_t butterfly_b[14] = {0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
          ^
 main.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t butterfly_b[14] = { 0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
+uint16_t butterfly_b[14] = {0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
 ^
 main.c(28): warning: no previous extern declaration for non-static variable 'snake_b' [-Wmissing-variable-declarations]
-uint16_t snake_b[16] = { 0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
+uint16_t snake_b[16] = {0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
          ^
 main.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t snake_b[16] = { 0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
+uint16_t snake_b[16] = {0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
 ^
-main.c(31): warning: no previous extern declaration for non-static variable 'i' [-Wmissing-variable-declarations]
-uint8_t i = 0;
-        ^
+main.c(29): warning: no previous extern declaration for non-static variable 'one_led_a' [-Wmissing-variable-declarations]
+uint16_t one_led_a[26] = { 0x0, 0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+         ^
+main.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t one_led_a[26] = { 0x0, 0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+^
+main.c(30): warning: no previous extern declaration for non-static variable 'one_led_b' [-Wmissing-variable-declarations]
+uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x2000, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x2, 0x1};
+         ^
+main.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x2000, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x2, 0x1};
+^
+main.c(31): warning: no previous extern declaration for non-static variable 'eff_2_a' [-Wmissing-variable-declarations]
+uint16_t eff_2_a[26] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff, 0xfff, 0x7ff, 0x3ff, 0x1ff, 0xff, 0x7f, 0x3f, 0x1f, 0xf, 0x7, 0x3, 0x1};
+         ^
 main.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t i = 0;
+uint16_t eff_2_a[26] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff, 0xfff, 0x7ff, 0x3ff, 0x1ff, 0xff, 0x7f, 0x3f, 0x1f, 0xf, 0x7, 0x3, 0x1};
 ^
-main.c(32): warning: no previous extern declaration for non-static variable 'x' [-Wmissing-variable-declarations]
-uint16_t x = 0x0000;
+main.c(32): warning: no previous extern declaration for non-static variable 'eff_2_b' [-Wmissing-variable-declarations]
+uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0xb, 0x1b, 0x3b, 0x7b, 0xfb, 0x1fb, 0x3fb, 0x7fb, 0xffb, 0x1ffb, 0x3ffb, 0x1ffb, 0xffb, 0x7fb, 0x3fb, 0x1fb, 0xfb, 0x7b, 0x3b, 0x1b, 0xb, 0x3, 0x1};
          ^
 main.c(32): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t x = 0x0000;
+uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0xb, 0x1b, 0x3b, 0x7b, 0xfb, 0x1fb, 0x3fb, 0x7fb, 0xffb, 0x1ffb, 0x3ffb, 0x1ffb, 0xffb, 0x7fb, 0x3fb, 0x1fb, 0xfb, 0x7b, 0x3b, 0x1b, 0xb, 0x3, 0x1};
 ^
-main.c(33): warning: no previous extern declaration for non-static variable 'stt_led' [-Wmissing-variable-declarations]
-uint8_t stt_led = 0,  delay_level = 0;
-        ^
-main.c(33): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t stt_led = 0,  delay_level = 0;
-^
-main.c(33): warning: no previous extern declaration for non-static variable 'delay_level' [-Wmissing-variable-declarations]
-uint8_t stt_led = 0,  delay_level = 0;
-                      ^
-main.c(33): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t stt_led = 0,  delay_level = 0;
-^
-main.c(34): warning: no previous extern declaration for non-static variable 'get_state_button' [-Wmissing-variable-declarations]
-uint8_t get_state_button = 0, old_sate_button = 0;
+main.c(34): warning: no previous extern declaration for non-static variable 'i' [-Wmissing-variable-declarations]
+uint8_t i = 0;
         ^
 main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t i = 0;
+^
+main.c(35): warning: no previous extern declaration for non-static variable 'stt_led' [-Wmissing-variable-declarations]
+uint8_t stt_led = 0, delay_level = 0;
+        ^
+main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t stt_led = 0, delay_level = 0;
+^
+main.c(35): warning: no previous extern declaration for non-static variable 'delay_level' [-Wmissing-variable-declarations]
+uint8_t stt_led = 0, delay_level = 0;
+                     ^
+main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t stt_led = 0, delay_level = 0;
+^
+main.c(36): warning: no previous extern declaration for non-static variable 'get_state_button' [-Wmissing-variable-declarations]
+uint8_t get_state_button = 0, old_sate_button = 0;
+        ^
+main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t get_state_button = 0, old_sate_button = 0;
 ^
-main.c(34): warning: no previous extern declaration for non-static variable 'old_sate_button' [-Wmissing-variable-declarations]
+main.c(36): warning: no previous extern declaration for non-static variable 'old_sate_button' [-Wmissing-variable-declarations]
 uint8_t get_state_button = 0, old_sate_button = 0;
                               ^
-main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t get_state_button = 0, old_sate_button = 0;
 ^
-main.c(39): warning: // comments are not allowed in this language [-Wcomment]
+main.c(37): warning: no previous extern declaration for non-static variable 'effect' [-Wmissing-variable-declarations]
+uint8_t effect = 0;
+        ^
+main.c(37): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t effect = 0;
+^
+main.c(41): warning: // comments are not allowed in this language [-Wcomment]
         DelayInit();                                                                                     // goi ham khoi tao du lieu cho cac ham delay
                                                                                                          ^
-main.c(117): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+main.c(138): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
 void SysTick_Handler()
      ^
-main.c(9): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+main.c(10): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
 void SysTick_Handler();
      ^
                      void
-main.c(117): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+main.c(138): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
 void SysTick_Handler()
                     ^
-17 warnings generated.
+main.c(148): warning: declaration shadows a variable in the global scope [-Wshadow]
+        uint16_t i, j;
+                 ^
+main.c(34): note: previous declaration is here
+uint8_t i = 0;
+        ^
+21 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=2718 RO-data=286 RW-data=136 ZI-data=1648  
+Program Size: Code=3216 RO-data=284 RW-data=340 ZI-data=1648  
 FromELF: creating hex file...
-".\Objects\STM32_LED.axf" - 0 Error(s), 17 Warning(s).
+".\Objects\STM32_LED.axf" - 0 Error(s), 21 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -164,26 +188,26 @@ Package Vendor: Keil
       Source file:   RTE_Driver/GPIO_STM32F10x.c
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
-      Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/system_stm32f10x.c
+      Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
+      Include file:  Device/StdPeriph_Driver/inc/misc.h
+      Source file:   Device/StdPeriph_Driver/src/misc.c
       Source file:   Device/StdPeriph_Driver/templates/stm32f10x_it.c
       Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
       Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
-      Include file:  Device/StdPeriph_Driver/inc/misc.h
-      Source file:   Device/StdPeriph_Driver/src/misc.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_gpio.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_gpio.c
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
-      Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
-Build Time Elapsed:  00:00:00
+      Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
