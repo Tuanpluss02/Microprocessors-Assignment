@@ -26,7 +26,83 @@ Project File Date:  11/03/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling stm32f10x_gpio.c...
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/StdPeriph_Driver/src/misc.c(131): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    NVIC->IP[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
+                                               ~ ^~~~~~~~~~~
+1 warning generated.
+compiling misc.c...
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
+1 warning generated.
+compiling system_stm32f10x.c...
+compiling stm32f10x_rcc.c...
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(26): warning: In file included from...
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.h(39): warning: // comments are not allowed in this language [-Wcomment]
+/// GPIO Pin identifier
+^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.h(173): warning: '_Bool' is a C99 extension [-Wc99-extensions]
+extern void GPIO_PortClock (GPIO_TypeDef *GPIOx, bool enable);
+                                                 ^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
+    #define bool _Bool
+                 ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(26): warning: In file included from...
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.h(182): warning: '_Bool' is a C99 extension [-Wc99-extensions]
+extern bool GPIO_GetPortClockState (GPIO_TypeDef *GPIOx);
+       ^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
+    #define bool _Bool
+                 ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(26): warning: In file included from...
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.h(197): warning: '_Bool' is a C99 extension [-Wc99-extensions]
+bool GPIO_PinConfigure(GPIO_TypeDef      *GPIOx,
+^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
+    #define bool _Bool
+                 ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(26): warning: In file included from...
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.h(246): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  return (GPIOx->IDR);
+  ~~~~~~  ~~~~~~~^~~
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(47): warning: // comments are not allowed in this language [-Wcomment]
+#define AFIO_MAPR_SWJ_CFG_VAL   (AFIO_SWJ_FULL)    // Full SWJ (JTAG-DP + SW-DP)
+                                                   ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(56): warning: '_Bool' is a C99 extension [-Wc99-extensions]
+void GPIO_PortClock (GPIO_TypeDef *GPIOx, bool enable) {
+                                          ^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
+    #define bool _Bool
+                 ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(84): warning: '_Bool' is a C99 extension [-Wc99-extensions]
+bool GPIO_GetPortClockState (GPIO_TypeDef *GPIOx) {
+^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
+    #define bool _Bool
+                 ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(111): warning: '_Bool' is a C99 extension [-Wc99-extensions]
+bool GPIO_PinConfigure(GPIO_TypeDef *GPIOx, uint32_t num, GPIO_CONF conf,
+^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h(15): note: expanded from macro 'bool'
+    #define bool _Bool
+                 ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(128): warning: integer constant not in range of enumerated type 'GPIO_CONF' [-Wassign-enum]
+      conf &= ~1;
+              ^
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(140): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+  *reg &= ~(0xF << (num << 2));
+       ~~ ^~~~~~~~~~~~~~~~~~~~
+C:/Users/ID/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/RTE_Driver/GPIO_STM32F10x.c(141): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+  *reg |= ((conf << 2) | mode) << (num << 2);
+       ~~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+12 warnings generated.
+compiling GPIO_STM32F10x.c...
 main.c(10): warning: this function declaration is not a prototype [-Wstrict-prototypes]
 void SysTick_Handler();
                     ^
@@ -38,120 +114,114 @@ main.c(21): note: declare 'static' if the variable is not intended to be used ou
 uint32_t delay_eff = 100;
 ^
 main.c(23): warning: no previous extern declaration for non-static variable 'eff_1' [-Wmissing-variable-declarations]
-uint16_t eff_1[2] = {0x0000, 0xFFFF};
+uint16_t eff_1[2] = {0x0000, 0xFFFF}; 
          ^
 main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t eff_1[2] = {0x0000, 0xFFFF};
+uint16_t eff_1[2] = {0x0000, 0xFFFF}; 
 ^
-main.c(25): warning: no previous extern declaration for non-static variable 'butterfly_a' [-Wmissing-variable-declarations]
+main.c(24): warning: no previous extern declaration for non-static variable 'butterfly_a' [-Wmissing-variable-declarations]
 uint16_t butterfly_a[14] = {0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
+         ^
+main.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t butterfly_a[14] = {0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
+^
+main.c(25): warning: no previous extern declaration for non-static variable 'snake_a' [-Wmissing-variable-declarations]
+uint16_t snake_a[16] = {0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000};
          ^
 main.c(25): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t butterfly_a[14] = {0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
-^
-main.c(26): warning: no previous extern declaration for non-static variable 'snake_a' [-Wmissing-variable-declarations]
 uint16_t snake_a[16] = {0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000};
+^
+main.c(26): warning: no previous extern declaration for non-static variable 'butterfly_b' [-Wmissing-variable-declarations]
+uint16_t butterfly_b[14] = { 0x0, 0x200, 0x700, 0xf80, 0x1fc0, 0x3fe0, 0x7fe2, 0xffe3, 0x7fe2, 0x3fe0, 0x1fc0, 0xf80, 0x700, 0x200};
          ^
 main.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t snake_a[16] = {0x0, 0x1, 0x3, 0x7, 0xe, 0x1c, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x9800, 0x9000};
+uint16_t butterfly_b[14] = { 0x0, 0x200, 0x700, 0xf80, 0x1fc0, 0x3fe0, 0x7fe2, 0xffe3, 0x7fe2, 0x3fe0, 0x1fc0, 0xf80, 0x700, 0x200};
 ^
-main.c(27): warning: no previous extern declaration for non-static variable 'butterfly_b' [-Wmissing-variable-declarations]
-uint16_t butterfly_b[14] = {0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
+main.c(27): warning: no previous extern declaration for non-static variable 'snake_b' [-Wmissing-variable-declarations]
+uint16_t snake_b[16] = { 0x0, 0x1, 0x3, 0x23, 0x62, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x7000, 0xe000, 0xc000, 0x8000};
          ^
 main.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t butterfly_b[14] = {0x0, 0x80, 0x1c0, 0x3e0, 0x7f0, 0xff8, 0x1ffa, 0x3ffb, 0x1ffa, 0xff8, 0x7f0, 0x3e0, 0x1c0, 0x80};
+uint16_t snake_b[16] = { 0x0, 0x1, 0x3, 0x23, 0x62, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x7000, 0xe000, 0xc000, 0x8000};
 ^
-main.c(28): warning: no previous extern declaration for non-static variable 'snake_b' [-Wmissing-variable-declarations]
-uint16_t snake_b[16] = {0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
+main.c(28): warning: no previous extern declaration for non-static variable 'one_led_a' [-Wmissing-variable-declarations]
+uint16_t one_led_a[26] = { 0x0, 0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
          ^
 main.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t snake_b[16] = {0x0, 0x1, 0x3, 0xb, 0x1a, 0x38, 0x70, 0xe0, 0x1c0, 0x380, 0x700, 0xe00, 0x1c00, 0x3800, 0x3000, 0x2000};
-^
-main.c(29): warning: no previous extern declaration for non-static variable 'one_led_a' [-Wmissing-variable-declarations]
 uint16_t one_led_a[26] = { 0x0, 0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+^
+main.c(29): warning: no previous extern declaration for non-static variable 'one_led_b' [-Wmissing-variable-declarations]
+uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x2000, 0x4000, 0x8000, 0x4000, 0x2000, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x2, 0x1};
          ^
 main.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t one_led_a[26] = { 0x0, 0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
+uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x2000, 0x4000, 0x8000, 0x4000, 0x2000, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x2, 0x1};
 ^
-main.c(30): warning: no previous extern declaration for non-static variable 'one_led_b' [-Wmissing-variable-declarations]
-uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x2000, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x2, 0x1};
+main.c(30): warning: no previous extern declaration for non-static variable 'eff_2_a' [-Wmissing-variable-declarations]
+uint16_t eff_2_a[26] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff, 0xfff, 0x7ff, 0x3ff, 0x1ff, 0xff, 0x7f, 0x3f, 0x1f, 0xf, 0x7, 0x3, 0x1};
          ^
 main.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x8, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x800, 0x1000, 0x2000, 0x1000, 0x800, 0x400, 0x200, 0x100, 0x80, 0x40, 0x20, 0x10, 0x8, 0x2, 0x1};
-^
-main.c(31): warning: no previous extern declaration for non-static variable 'eff_2_a' [-Wmissing-variable-declarations]
 uint16_t eff_2_a[26] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff, 0xfff, 0x7ff, 0x3ff, 0x1ff, 0xff, 0x7f, 0x3f, 0x1f, 0xf, 0x7, 0x3, 0x1};
+^
+main.c(31): warning: no previous extern declaration for non-static variable 'eff_2_b' [-Wmissing-variable-declarations]
+uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0x23, 0x63, 0xe3, 0x1e3, 0x3e3, 0x7e3, 0xfe3, 0x1fe3, 0x3fe3, 0x7fe3, 0xffe3, 0x7fe3, 0x3fe3, 0x1fe3, 0xfe3, 0x7e3, 0x3e3, 0x1e3, 0xe3, 0x63, 0x23, 0x3, 0x1};
          ^
 main.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t eff_2_a[26] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff, 0xfff, 0x7ff, 0x3ff, 0x1ff, 0xff, 0x7f, 0x3f, 0x1f, 0xf, 0x7, 0x3, 0x1};
+uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0x23, 0x63, 0xe3, 0x1e3, 0x3e3, 0x7e3, 0xfe3, 0x1fe3, 0x3fe3, 0x7fe3, 0xffe3, 0x7fe3, 0x3fe3, 0x1fe3, 0xfe3, 0x7e3, 0x3e3, 0x1e3, 0xe3, 0x63, 0x23, 0x3, 0x1};
 ^
-main.c(32): warning: no previous extern declaration for non-static variable 'eff_2_b' [-Wmissing-variable-declarations]
-uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0xb, 0x1b, 0x3b, 0x7b, 0xfb, 0x1fb, 0x3fb, 0x7fb, 0xffb, 0x1ffb, 0x3ffb, 0x1ffb, 0xffb, 0x7fb, 0x3fb, 0x1fb, 0xfb, 0x7b, 0x3b, 0x1b, 0xb, 0x3, 0x1};
-         ^
-main.c(32): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0xb, 0x1b, 0x3b, 0x7b, 0xfb, 0x1fb, 0x3fb, 0x7fb, 0xffb, 0x1ffb, 0x3ffb, 0x1ffb, 0xffb, 0x7fb, 0x3fb, 0x1fb, 0xfb, 0x7b, 0x3b, 0x1b, 0xb, 0x3, 0x1};
-^
-main.c(34): warning: no previous extern declaration for non-static variable 'i' [-Wmissing-variable-declarations]
+main.c(33): warning: no previous extern declaration for non-static variable 'i' [-Wmissing-variable-declarations]
 uint8_t i = 0;
+        ^
+main.c(33): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t i = 0;
+^
+main.c(34): warning: no previous extern declaration for non-static variable 'stt_led' [-Wmissing-variable-declarations]
+uint8_t stt_led = 0, delay_level = 0;
         ^
 main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t i = 0;
-^
-main.c(35): warning: no previous extern declaration for non-static variable 'stt_led' [-Wmissing-variable-declarations]
-uint8_t stt_led = 0, delay_level = 0;
-        ^
-main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t stt_led = 0, delay_level = 0;
 ^
-main.c(35): warning: no previous extern declaration for non-static variable 'delay_level' [-Wmissing-variable-declarations]
+main.c(34): warning: no previous extern declaration for non-static variable 'delay_level' [-Wmissing-variable-declarations]
 uint8_t stt_led = 0, delay_level = 0;
                      ^
-main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t stt_led = 0, delay_level = 0;
 ^
-main.c(36): warning: no previous extern declaration for non-static variable 'get_state_button' [-Wmissing-variable-declarations]
+main.c(35): warning: no previous extern declaration for non-static variable 'get_state_button' [-Wmissing-variable-declarations]
 uint8_t get_state_button = 0, old_sate_button = 0;
         ^
-main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t get_state_button = 0, old_sate_button = 0;
 ^
-main.c(36): warning: no previous extern declaration for non-static variable 'old_sate_button' [-Wmissing-variable-declarations]
+main.c(35): warning: no previous extern declaration for non-static variable 'old_sate_button' [-Wmissing-variable-declarations]
 uint8_t get_state_button = 0, old_sate_button = 0;
                               ^
-main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t get_state_button = 0, old_sate_button = 0;
 ^
-main.c(37): warning: no previous extern declaration for non-static variable 'effect' [-Wmissing-variable-declarations]
+main.c(36): warning: no previous extern declaration for non-static variable 'effect' [-Wmissing-variable-declarations]
 uint8_t effect = 0;
         ^
-main.c(37): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t effect = 0;
 ^
-main.c(41): warning: // comments are not allowed in this language [-Wcomment]
-        DelayInit();                                                                                     // goi ham khoi tao du lieu cho cac ham delay
-                                                                                                         ^
-main.c(138): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+main.c(40): warning: // comments are not allowed in this language [-Wcomment]
+        DelayInit();                                                                                      // goi ham khoi tao du lieu cho cac ham delay theo thoi gian thuc
+                                                                                                          ^
+main.c(136): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
 void SysTick_Handler()
      ^
 main.c(10): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
 void SysTick_Handler();
      ^
                      void
-main.c(138): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+main.c(136): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
 void SysTick_Handler()
                     ^
-main.c(148): warning: declaration shadows a variable in the global scope [-Wshadow]
-        uint16_t i, j;
-                 ^
-main.c(34): note: previous declaration is here
-uint8_t i = 0;
-        ^
-21 warnings generated.
+20 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=3216 RO-data=284 RW-data=340 ZI-data=1648  
+Program Size: Code=2944 RO-data=284 RW-data=340 ZI-data=1648  
 FromELF: creating hex file...
-".\Objects\STM32_LED.axf" - 0 Error(s), 21 Warning(s).
+".\Objects\STM32_LED.axf" - 0 Error(s), 34 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -189,24 +259,24 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device/Source/system_stm32f10x.c
-      Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Include file:  RTE_Driver/Config/RTE_Device.h
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
+      Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
+      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
       Include file:  Device/StdPeriph_Driver/inc/misc.h
       Source file:   Device/StdPeriph_Driver/src/misc.c
       Source file:   Device/StdPeriph_Driver/templates/stm32f10x_it.c
-      Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
-      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_gpio.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_gpio.c
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
-      Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
+      Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
