@@ -8,6 +8,7 @@ void Delay_ms(uint32_t ms);
 void delay_button(uint16_t _vrTime);
 void GPIO_Configuration(void);
 void SysTick_Handler();
+uint8_t Check_button();
 
 void effect_1(uint32_t ms);
 void effect_2(uint32_t ms);
@@ -42,7 +43,6 @@ int main(void)
 	GPIO_Write(GPIOA, 0x0000);					// ban dau tat het LED
 	while (1)
 	{
-		// CHONG NHIEU
 		get_state_button = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13); // 
 		if (get_state_button != old_sate_button)
 		{
@@ -89,6 +89,8 @@ void effect_1(uint32_t ms)
 	{
 		GPIO_Write(GPIOA, eff_1[i]);
 		GPIO_Write(GPIOB, eff_1[i]);
+		if(Check_button())
+			break;
 		Delay_ms(ms);
 	}
 }
@@ -99,6 +101,8 @@ void effect_2(uint32_t ms){
 	{
 		GPIO_Write(GPIOA, eff_2_a[i]);
 		GPIO_Write(GPIOB, eff_2_b[i]);
+		if(Check_button())
+			break;
 		Delay_ms(ms);
 	}
 }
@@ -109,6 +113,8 @@ void one_led_eff(uint32_t ms)
 	{
 		GPIO_Write(GPIOA, one_led_a[i]);
 		GPIO_Write(GPIOB, one_led_b[i]);
+		if(Check_button())
+			break;
 		Delay_ms(ms);
 	}
 }
@@ -119,6 +125,8 @@ void snake_eff(uint32_t ms)
 	{
 		GPIO_Write(GPIOB, snake_b[i]);
 		GPIO_Write(GPIOA, snake_a[i]);
+		if(Check_button())
+			break;
 		Delay_ms(ms);
 	}
 }
@@ -129,8 +137,35 @@ void butterfly_eff(uint32_t ms)
 	{
 		GPIO_Write(GPIOA, butterfly_a[i]);
 		GPIO_Write(GPIOB, butterfly_b[i]);
+		if(Check_button())
+			break;
 		Delay_ms(ms);
 	}
+}
+
+uint8_t Check_button(){
+		uint8_t check = 0;
+		get_state_button = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13); // 
+		if (get_state_button != old_sate_button)
+		{
+			old_sate_button = get_state_button;
+			//delay_button(100);
+			if (get_state_button == 1)
+			{
+				check = 1;
+				if (effect == 4)
+				{
+					//delay_button(100);
+					effect = 0;
+				}
+				else
+				{
+					//delay_button(100);
+					effect++;
+				}
+			}
+		}
+	return check;
 }
 
 void SysTick_Handler()
@@ -165,6 +200,7 @@ void Delay_ms(uint32_t n)
 	}
 }
 
+
 void GPIO_Configuration(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -173,7 +209,7 @@ void GPIO_Configuration(void)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE);
 	//=================================OUTPUT========================================
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // ngõ ra kieu day kéo
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // ng? ra kieu day k?o
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // thiet lap toc do ngo ra cac chan
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
