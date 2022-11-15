@@ -2,24 +2,23 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 
-void DelayInit(void);
-void Delay_us(uint32_t us);
-void Delay_ms(uint32_t ms);
-void delay_button(uint16_t _vrTime);
-void GPIO_Configuration(void);
+void Delay_us(uint32_t us);						// Ham delay theo thoi gian thuc, don vi: us (micro seconds)
+void Delay_ms(uint32_t ms);						// Ham delay theo thoi gian thuc, don vi: ms (mili seconds)
+void DelayInit(void);    							// Khoi tao cac ham delay
+void GPIO_Configuration(void);				// Khai bao, thiet lap cac chan su dung
 void SysTick_Handler();
 uint8_t Check_button();
 
-void effect_1(uint32_t ms);
-void effect_2(uint32_t ms);
-void snake_eff(uint32_t ms);
-void butterfly_eff(uint32_t ms);
-void one_led_eff(uint32_t ms);
+void effect_1(uint32_t ms);           // Nhap nhay tat ca cac LED
+void effect_2(uint32_t ms);						// Hieu ung sang don
+void snake_eff(uint32_t ms);					// Hieu ung ran chay
+void butterfly_eff(uint32_t ms);			// Hieu ung canh buom
+void one_led_eff(uint32_t ms); 				// Tung LED sang theo thu tu
 
 
-static __IO uint32_t nTicks;
+static __IO uint32_t nTicks;					// Su dung cho ham delay
 
-uint32_t delay_eff = 100;
+uint32_t delay_eff = 100;							// Thoi gian delay trong cac hieu ung
 
 uint16_t eff_1[2] = {0x0000, 0xFFFF}; 
 uint16_t butterfly_a[14] = {0x0, 0x40, 0xe0, 0x1f0, 0x3f8, 0x7fc, 0xffe, 0x1fff, 0xffe, 0x7fc, 0x3f8, 0x1f0, 0xe0, 0x40};
@@ -31,33 +30,30 @@ uint16_t one_led_b[26] = { 0x0, 0x1, 0x2, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400,
 uint16_t eff_2_a[26] = { 0x0, 0x1, 0x3, 0x7, 0xf, 0x1f, 0x3f, 0x7f, 0xff, 0x1ff, 0x3ff, 0x7ff, 0xfff, 0x1fff, 0xfff, 0x7ff, 0x3ff, 0x1ff, 0xff, 0x7f, 0x3f, 0x1f, 0xf, 0x7, 0x3, 0x1};
 uint16_t eff_2_b[26] = { 0x0, 0x1, 0x3, 0x23, 0x63, 0xe3, 0x1e3, 0x3e3, 0x7e3, 0xfe3, 0x1fe3, 0x3fe3, 0x7fe3, 0xffe3, 0x7fe3, 0x3fe3, 0x1fe3, 0xfe3, 0x7e3, 0x3e3, 0x1e3, 0xe3, 0x63, 0x23, 0x3, 0x1};
 
-uint8_t i = 0;
-uint8_t stt_led = 0, delay_level = 0;
-uint8_t get_state_button = 0, old_sate_button = 0;
-uint8_t effect = 0;
+uint8_t i = 0;												// Su dung cho cac vong for
+uint8_t get_state_button = 0;  				// Luu trang thai hien tai cua nut nhan
+uint8_t	old_sate_button = 0;					// Luu trang thai truoc do cua nut nhan
+uint8_t effect = 0;										// Thu tu hieu ung
 
 int main(void)
 {
-	DelayInit();											  // goi ham khoi tao du lieu cho cac ham delay theo thoi gian thuc
-	GPIO_Configuration();								// goi ham cau hinh ngo vao ra cho cac PORT
+	DelayInit();											  // ham khoi tao du lieu cho cac ham delay theo thoi gian thuc
+	GPIO_Configuration();								// ham cau hinh ngo vao ra cho cac PORT
 	GPIO_Write(GPIOA, 0x0000);					// ban dau tat het LED
 	while (1)
 	{
-		get_state_button = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13); // 
+		get_state_button = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 		if (get_state_button != old_sate_button)
 		{
 			old_sate_button = get_state_button;
-			//delay_button(100);
 			if (get_state_button == 1)
 			{
 				if (effect == 4)
 				{
-					//delay_button(100);
 					effect = 0;
 				}
 				else
 				{
-					//delay_button(100);
 					effect++;
 				}
 			}
@@ -87,9 +83,9 @@ void effect_1(uint32_t ms)
 {
 	for (i = 0; i < 2; i++)
 	{
-		GPIO_Write(GPIOA, eff_1[i]);
-		GPIO_Write(GPIOB, eff_1[i]);
-		if(Check_button())
+		GPIO_Write(GPIOA, eff_1[i]);  // ghi bit tuong ung vao PORTA 
+		GPIO_Write(GPIOB, eff_1[i]);  // ghi bit tuong ung vao PORTB
+		if(Check_button())						// ham kiem tra xem button co duoc nhan hay khong, neu co thi dung hieu ung hien tai de chuyen den hieu ung tiep theo
 			break;
 		Delay_ms(ms);
 	}
@@ -143,29 +139,29 @@ void butterfly_eff(uint32_t ms)
 	}
 }
 
-uint8_t Check_button(){
-		uint8_t check = 0;
-		get_state_button = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13); // 
-		if (get_state_button != old_sate_button)
-		{
-			old_sate_button = get_state_button;
+uint8_t Check_button(){ 
+		uint8_t check = 0; 																						// Bien tra ve trang thai cua nut nhan
+		get_state_button = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13); // Lay trang thai cua chan PC13
+		if (get_state_button != old_sate_button)                      // Neu trang thai hien tai khac voi trang thai truoc do thi thuc hien lenh trong if
+		{	
+			old_sate_button = get_state_button;													// Gan trang thai hien tai cho bien old_sate_button de so sanh voi lan nhan tiep theo
 			//delay_button(100);
-			if (get_state_button == 1)
+			if (get_state_button == 1)																	// Neu nut duoc nhan(tra ve bit 1) thi thuc hien lech trong if
 			{
-				check = 1;
-				if (effect == 4)
+				check = !check;																						// Doi trang thai cua bien check vi nut duoc nhan
+				if (effect == 4)																					// Neu thu tu hieu ung da la cao nhat thi cho chay lai tu hieu ung dau tien
 				{
 					//delay_button(100);
 					effect = 0;
 				}
-				else
+				else																											// Neu hien tai chua phai hieu ung cuoi thi nhay den hieu ung tiep theo
 				{
 					//delay_button(100);
 					effect++;
 				}
 			}
 		}
-	return check;
+	return check;																										// Tra ve trang thai cua nut nhan(neu nut duoc nhan thi tra ve 1, nguoc lai 0) 
 }
 
 void SysTick_Handler()
@@ -186,13 +182,11 @@ void DelayInit()
 void Delay_us(uint32_t n)
 {
 	nTicks = n;
-	while (nTicks)
-		;
+	while (nTicks);
 }
 
 void Delay_ms(uint32_t n)
 {
-	// Wait until ms reach zero
 	while (n--)
 	{
 		// Delay 1ms
@@ -204,22 +198,25 @@ void Delay_ms(uint32_t n)
 void GPIO_Configuration(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	/*==================================PORT==========================================*/
-	// Enable clock GPIOA
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE);
-	//=================================OUTPUT========================================
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // ng? ra kieu day k?o
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // thiet lap toc do ngo ra cac chan
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	//==========================PORT====================================//
+	
+	// Khai bao su dung PORT-A, PORT-B va PORT-C 
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE);
+	
+	//=================================OUTPUT========================================
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;        // Khai bao su dung tat ca cac chan cua PORT-A
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   // Che do chan la output
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  // Thiet lap toc do ngo ra cac chan
+	GPIO_Init(GPIOA, &GPIO_InitStructure);             // Tien hanh nap cac cai dat o tren
+
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;        // Khai bao su dung tat ca cac chan cua PORT-B
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   // Che do chan la output
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  // Thiet lap toc do ngo ra cac chan
+	GPIO_Init(GPIOB, &GPIO_InitStructure);             // Tien hanh nap cac cai dat o tren
 
 	//================Button=======================//
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
-	GPIO_Init(GPIOC, &GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;         // Khai bao su dung chan 13 cua PORT-C
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;      // Che do chan la nhan tin hieu 
+	GPIO_Init(GPIOC, &GPIO_InitStructure); 						 // Tien hanh nap cac cai dat o tren
 }
